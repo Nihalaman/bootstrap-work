@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BrewCraft</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+        }
+
+        #toggleBtn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: #3f1f01;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            font-size: 20px;
+            border-radius: 4px;
+            display: none;
+            z-index: 1001;
+        }
+
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: none;
+            z-index: 999;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background: #3f1f01;
+            padding: 40px 30px;
+        }
+
+        #sidebar h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        #sidebar nav a {
+            display: block;
+            color: rgba(255, 255, 255, .75);
+            text-decoration: none;
+            font-size: .95rem;
+            padding: 8px 0;
+            transition: color .2s;
+        }
+
+        #sidebar nav a:hover,
+        #sidebar nav a.active {
+            color: #fff;
+        }
+
+        #main {
+            margin-left: 240px;
+        }
+
+        .hero {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #837403;
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+        }
+
+        p {
+            color: #282626;
+            font-size: .95rem;
+            line-height: 1.8;
+        }
+
+        .team-img {
+            width: 350px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .btn-blue {
+            background: #a2a6a9;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+
+        .btn-blue:hover {
+            background: #1a6fa0;
+            color: #fff;
+        }
+
+        .gallery img {
+            width: calc(25% - 8px);
+            height: 500px;
+            object-fit: cover;
+            border-radius: 3px;
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+            opacity: .9;
+        }
+
+
+        @media (max-width: 768px) {
+            #sidebar {
+                position: fixed;
+                left: -250px;
+                width: 220px;
+                height: 100%;
+                transition: 0.3s;
+                z-index: 1000;
+            }
+
+            #sidebar.open {
+                left: 0;
+            }
+
+            #main {
+                margin-left: 0;
+            }
+
+            #toggleBtn {
+                display: block;
+            }
+
+            #main {
+                margin-left: 0;
+            }
+
+            .team-img {
+                width: 100%;
+                height: 200px;
+                display: inline-block;
+            }
+
+            .gallery img {
+                width: calc(33% - 7px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button id="toggleBtn" onclick="toggleSidebar()">☰</button>
+    <div id="overlay" onclick="closeSidebar()"></div>
+    <div id="sidebar">
+        <div class="text-center text-white mb-4">
+            <div style="font-size:2rem"><i class="fa-brands fa-java"></i></div>
+            <h1>BrewCraft</h1>
+        </div>
+        <nav>
+            <a href="#welcome" class="active">Welcome</a>
+            <a href="#about">About Us</a>
+            <a href="#gallery">Gallery One</a>
+            <a href="#gallery2">Second Gallery</a>
+            <a href="#gallery3">Third Gallery</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </div>
+
+    <div id="main">
+
+        <img src="./brewcraft.png" class="hero" alt="Hero" />
+
+        <div class="px-5 py-5" id="welcome">
+            <h2>Welcome to BrewCraft</h2>
+            <p>BrewCraft — The Art of Coffee.
+                At BrewCraft, we believe coffee is more than a drink it’s a craft.
+                From handpicked beans to perfectly balanced flavors, every cup is made with passion and precision.
+                Indulge in the finest blends and savor every moment. Where every cup is carefully crafted and every sip
+                tells a story.
+                Sit back, relax, and let the aroma of freshly brewed coffee brighten your day. Whether you're here to
+                work, relax, or catch up with friends,
+                we’ve brewed something special just for you</p>
+        </div>
+
+        <div class=" px-5 py-5" id="about">
+            <div class="row align-items-start">
+                <div class="col-md-4 ">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80"
+                        class="team-img img-fluid" alt="Team" />
+                </div>
+                <div class="col-md-8" id="abtm">
+                    <h2>About the team</h2>
+                    <p>At BrewCraft, our team is a blend of passion, creativity, and craftsmanship.
+                        We are coffee lovers, skilled baristas, and hospitality enthusiasts who believe that every cup
+                        should be an experience — not just a drin
+                        From carefully selecting quality beans to perfecting each brew, our team works with dedication
+                        and attention to detail. We take pride in creating a warm and welcoming space where
+                        conversations flow as smoothly as our coffee.Behind every smile and every handcrafted cup is a
+                        team
+                        committed to excellence, comfort, and community.</p>
+
+
+                    <button class="btn-blue">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class=" px-5 py-5">
+            <div class="" id="gallery">
+                <h2>Gallery One</h2>
+                <div class="gallery d-flex gap-2 flex-wrap">
+                    <img src="https://i.pinimg.com/736x/15/fb/d5/15fbd526120fdaf676f221ae2afd2359.jpg" alt="" />
+                    <img src="https://i.pinimg.com/736x/57/e1/14/57e114f83e455f1c6d565fa6c6839963.jpg" alt="" />
+                    <img src="https://i.pinimg.com/736x/a7/4e/92/a74e92787f9084e49fdfbea42e28e50c.jpg" alt="" />
+                    <img src="https://i.pinimg.com/736x/35/6c/39/356c397a5b656f53b1180a522211cf7c.jpg" alt="" />
+                    <img src="https://i.pinimg.com/736x/9e/ad/58/9ead5831fc9f6417d5177322dd809764.jpg" alt="" />
+                    <img src="https://i.pinimg.com/736x/d6/99/53/d69953eb52d9faa2b28bce26cb54e4ba.jpg" alt="" />
+                    <img src="https://i.pinimg.com/736x/d6/3c/66/d63c66d5635e9f98ae9af73b19d89304.jpg" alt="" />
+                    <img src="https://i.pinimg.com/736x/5f/2c/7d/5f2c7dbc0902971ac9657c0a659389b9.jpg" alt="" />
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            function toggleSidebar() {
+                const open = document.getElementById('sidebar').classList.toggle('open');
+                document.getElementById('toggleBtn').classList.toggle('open', open);
+                document.getElementById('overlay').style.display = open ? 'block' : 'none';
+            }
+
+            function closeSidebar() {
+                document.getElementById('sidebar').classList.remove('open');
+                document.getElementById('toggleBtn').classList.remove('open');
+                document.getElementById('overlay').style.display = 'none';
+            }
+            // Active nav on scroll
+            const links = document.querySelectorAll('#sidebar nav a');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                document.querySelectorAll('[id]').forEach(s => { if (scrollY >= s.offsetTop - 80) current = s.id; });
+                links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+            });
+        </script>
+
+</body>
+
+</html>
